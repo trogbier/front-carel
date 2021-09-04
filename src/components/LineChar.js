@@ -3,7 +3,7 @@ import {Line} from "react-chartjs-2";
 import {ContextData} from "../context/ContextData";
 
 const LineChar = () => {
-    const {expect,fact,b} = useContext(ContextData)
+    const {expect, fact, b} = useContext(ContextData)
     return (
         <div style={{marginBottom: 100}}>
             <Line
@@ -27,9 +27,9 @@ const LineChar = () => {
                     },
                         {
                             label: 'Прогноз',
-                            data: expect.map(((title,id)=>{
+                            data: expect.map((title, id) => {
                                 return expect[id].title
-                            })),
+                            }),
                             backgroundColor: [
                                 'rgb(23,15,227)'
                             ],

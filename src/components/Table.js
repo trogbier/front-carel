@@ -1,17 +1,24 @@
 import React, {useContext} from 'react';
 import {ContextData} from "../context/ContextData";
+import Switches from "./Switches";
 
 const Table = () => {
-    const {expect, fact, b, setExpect} = useContext(ContextData)
+    const {expect, fact, b, setExpect,change} = useContext(ContextData)
 
     const Rename = (e, id) => {
         e.preventDefault()
         // console.log(expect[id].title = 123)
-        const newData = Number(expect[id].title = +e.target.value)
-       setExpect([...expect],newData)
+        const newData = expect[id].title = +e.target.value
+        setExpect([...expect], newData)
     }
     return (
-        <div style={{marginBottom: 100, marginTop: 50}}>
+
+    <div style={{marginBottom: 100, marginTop: 50}}>
+        <div style={{display:'flex'}}>
+            <Switches/>
+            <h4 className={'center'} style={{marginRight:50,marginLeft:460}}>Прогноз бюджета</h4>
+        </div>
+
 
             <table className="highlight">
                 <thead>
@@ -27,13 +34,17 @@ const Table = () => {
                     <th>Прогноз</th>
                     {expect.map((expect, id) => {
                         return <td key={id}><input
-                            style={{borderBottom: 'none', height: '100%', margin: 0}}
+                            style={{
+                                borderBottom: 'none', height: '100%', margin: 0,
+                                color: 'rgba(0,0,0,0.87)',
+                                borderColor: 'rgba(118, 118, 118, 0.3)'
+                            }}
                             type="number"
                             defaultValue={expect.title}
                             onChange={event => Rename(event, id)}
+                            disabled={change}
                         /></td>
                     })}
-
                 </tr>
                 <tr>
                     <th>Фактически</th>

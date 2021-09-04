@@ -6,7 +6,7 @@ const Nav = () => {
         <div style={{marginBottom: 80}}>
             <nav>
                 <div className="nav-wrapper">
-                    <Link to="/" className="brand-logo center">Сайт</Link>
+                    <Link to="/" className="brand-logo center">Бюджет республики Карелия</Link>
                     <ul id="nav-mobile" className="left hide-on-med-and-down">
                         <li><Link to="/">Графики</Link></li>
                         <li><Link to="/table">Таблицы</Link></li>
