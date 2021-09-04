@@ -17,7 +17,7 @@ const BarChar = () => {
                     datasets: [{
                         label: 'Отклонение от фактического результата',
                         data: fact.map((num, index) => {
-                           let k = 1 - (num / expect[index])
+                           let k = 1 - (num / expect[index].title)
                             return Math.abs(k)
                         }),
                         backgroundColor: [

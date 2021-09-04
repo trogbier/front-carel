@@ -27,7 +27,9 @@ const LineChar = () => {
                     },
                         {
                             label: 'Прогноз',
-                            data: expect,
+                            data: expect.map(((title,id)=>{
+                                return expect[id].title
+                            })),
                             backgroundColor: [
                                 'rgb(23,15,227)'
                             ],

@@ -2,8 +2,14 @@ import React, {useContext} from 'react';
 import {ContextData} from "../context/ContextData";
 
 const Table = () => {
-    const {expect, fact, b} = useContext(ContextData)
+    const {expect, fact, b, setExpect} = useContext(ContextData)
 
+    const Rename = (e, id) => {
+        e.preventDefault()
+        // console.log(expect[id].title = 123)
+        const newData = Number(expect[id].title = +e.target.value)
+       setExpect([...expect],newData)
+    }
     return (
         <div style={{marginBottom: 100, marginTop: 50}}>
 
@@ -20,7 +26,12 @@ const Table = () => {
                 <tr>
                     <th>Прогноз</th>
                     {expect.map((expect, id) => {
-                        return <td key={id}>{expect}</td>
+                        return <td key={id}><input
+                            style={{borderBottom: 'none', height: '100%', margin: 0}}
+                            type="number"
+                            defaultValue={expect.title}
+                            onChange={event => Rename(event, id)}
+                        /></td>
                     })}
 
                 </tr>
