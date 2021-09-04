@@ -3,100 +3,56 @@ import {ContextData} from "../context/ContextData";
 
 
 const Table = () => {
-    const {fact, b} = useContext(ContextData)
+
+    const {change,dataInfo, setDataInfo} = useContext(ContextData)
+    const title = ['Индекс потребительских цен (ИНФЛЯЦИЯ)', 'Валовой региональный продукт в сопоставимых ценах', 'Индекс промышленного производства (С+D+E)',
+        'Продукция сельского хозяйства во всех категориях хозяйств', 'Инвестиции в основной капитал за счет всех источников финансирования', 'Оборот розничной торговли',
+        'Объем платных услуг населению', 'Реальные располагаемые денежные доходы населения', 'Внешнеторговый оборот темпы роста', 'Уровень зарегистрированной безработицы',
+        'Численность постоянного населения', 'Темпы роста - Экспорт', 'Темпы роста -Импорт']
+    const Rename = (e, id,index) => {
+        e.preventDefault()
+        // console.log(dataInfo[index][id].title)
+        const newData = dataInfo[index][id].title = +e.target.value
+        console.log(newData)
+        const copy = JSON.parse(JSON.stringify(dataInfo))
+        console.log(copy)
+        setDataInfo(copy, newData)
+    }
     return (
         <div style={{marginBottom: 100, marginTop: 50}}>
-
+            <h4 className={'center'}>Основные показатели социально-экономического развития</h4>
             <table className="highlight">
                 <thead>
                 <tr>
                     <th/>
-                    {b.map((data, index) => {
-                        return <th key={index}>{index + 2010}</th>
+                    {dataInfo[0].map((info, index) => {
+                        return <th key={index + info}>{index + 2010}</th>
                     })}
                 </tr>
                 </thead>
-
                 <tbody>
-                <tr>
-                    <th>Индекс потребительских цен (ИНФЛЯЦИЯ)
-                    </th>
-                    {fact.map(fact => {
-                        return <td>{fact}</td>
-                    })}
-                </tr>
-                <tr>
-                    <th>Валовой региональный продукт в сопоставимых ценах</th>
-                    {fact.map(fact => {
-                        return <td>{fact}</td>
-                    })}
-                </tr>
-                <tr>
-                    <th>Индекс промышленного производства (С+D+E)</th>
-                    {fact.map(fact => {
-                        return <td>{fact}</td>
-                    })}
-                </tr>
-                <tr>
-                    <th>Продукция сельского хозяйства во всех категориях хозяйств</th>
-                    {fact.map(fact => {
-                        return <td>{fact}</td>
-                    })}
-                </tr>
-                <tr>
-                    <th>Инвестиции в основной капитал за счет всех источников финансирования</th>
-                    {fact.map(fact => {
-                        return <td>{fact}</td>
-                    })}
-                </tr>
-                <tr>
-                    <th>Оборот розничной торговли</th>
-                    {fact.map(fact => {
-                        return <td>{fact}</td>
-                    })}
-                </tr>
-                <tr>
-                    <th>Объем платных услуг населению</th>
-                    {fact.map(fact => {
-                        return <td>{fact}</td>
-                    })}
-                </tr>
-                <tr>
-                    <th>Реальные располагаемые денежные доходы населения</th>
-                    {fact.map(fact => {
-                        return <td>{fact}</td>
-                    })}
-                </tr>
-                <tr>
-                    <th>Внешнеторговый оборот темпы роста</th>
-                    {fact.map(fact => {
-                        return <td>{fact}</td>
-                    })}
-                </tr>
-                <tr>
-                    <th>Уровень зарегистрированной безработицы</th>
-                    {fact.map(fact => {
-                        return <td>{fact}</td>
-                    })}
-                </tr>
-                <tr>
-                    <th>Численность постоянного населения</th>
-                    {fact.map(fact => {
-                        return <td>{fact}</td>
-                    })}
-                </tr>
-                <tr>
-                    <th>Темпы роста - Экспорт</th>
-                    {fact.map(fact => {
-                        return <td>{fact}</td>
-                    })}
-                </tr>
-                <tr>
-                    <th>Темпы роста -Импорт</th>
-                    {fact.map(fact => {
-                        return <td>{fact}</td>
-                    })}
-                </tr>
+                {title.map((title, id) => {
+                    return (
+                        <tr key={id+'tr'}>
+                            <th key={id}>{title}</th>
+                            {dataInfo[id].map((title, index) => {
+                                return (
+                                    <td key={index}><input
+                                        style={{
+                                            borderBottom: 'none', height: '100%', margin: 0,
+                                            color: 'rgba(0,0,0,0.87)',
+                                            borderColor: 'rgba(118, 118, 118, 0.3)'
+                                        }}
+                                        type="number"
+                                        defaultValue={title.title}
+                                        onChange={event => Rename(event, index,id)}
+                                        disabled={change}
+                                    /></td>
+                                )
+                            })}
+                        </tr>
+                    )
+                })}
                 </tbody>
             </table>
         </div>
