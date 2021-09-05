@@ -3,7 +3,7 @@ import {Bar} from "react-chartjs-2";
 import {ContextData} from "../context/ContextData";
 
 const BarChar = () => {
-    const {expect, fact,b} = useContext(ContextData)
+    const {expect, fact,countYear} = useContext(ContextData)
 
     return (
         <div style={{marginBottom: 100}}>
@@ -11,7 +11,7 @@ const BarChar = () => {
                 width="400"
                 height="400"
                 data={{
-                    labels: b.map((data, index) => {
+                    labels: countYear.map((data, index) => {
                         return index + 2010
                     }),
                     datasets: [{

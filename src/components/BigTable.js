@@ -1,9 +1,10 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {ContextData} from "../context/ContextData";
+import LineTable from "./LineTable";
 
 
 const Table = () => {
-
+    const [isOpen,setIsOpen]=useState([{title:'',data:false,id:null}])
     const {change,dataInfo, setDataInfo} = useContext(ContextData)
     const title = ['Индекс потребительских цен (ИНФЛЯЦИЯ)', 'Валовой региональный продукт в сопоставимых ценах', 'Индекс промышленного производства (С+D+E)',
         'Продукция сельского хозяйства во всех категориях хозяйств', 'Инвестиции в основной капитал за счет всех источников финансирования', 'Оборот розничной торговли',
@@ -11,12 +12,12 @@ const Table = () => {
         'Численность постоянного населения', 'Темпы роста - Экспорт', 'Темпы роста -Импорт']
     const Rename = (e, id,index) => {
         e.preventDefault()
-        // console.log(dataInfo[index][id].title)
         const newData = dataInfo[index][id].title = +e.target.value
-        console.log(newData)
         const copy = JSON.parse(JSON.stringify(dataInfo))
-        console.log(copy)
         setDataInfo(copy, newData)
+    }
+    const clickHandler = (e,id) => {
+        setIsOpen({title:`${e.target.innerText}`,data:true,id:id})
     }
     return (
         <div style={{marginBottom: 100, marginTop: 50}}>
@@ -34,11 +35,16 @@ const Table = () => {
                 {title.map((title, id) => {
                     return (
                         <tr key={id+'tr'}>
-                            <th key={id}>{title}</th>
+                            <th
+                                key={id}
+                                onClick={(e)=>clickHandler(e,id)}
+                                style={{cursor:'pointer'}}
+                            >{title}</th>
                             {dataInfo[id].map((title, index) => {
                                 return (
                                     <td key={index}><input
                                         style={{
+                                            cursor:'pointer',
                                             borderBottom: 'none', height: '100%', margin: 0,
                                             color: 'rgba(0,0,0,0.87)',
                                             borderColor: 'rgba(118, 118, 118, 0.3)'
@@ -55,6 +61,10 @@ const Table = () => {
                 })}
                 </tbody>
             </table>
+            {isOpen.data?<LineTable
+                title={isOpen.title}
+                content={dataInfo[isOpen.id]}
+            />: null}
         </div>
     );
 };

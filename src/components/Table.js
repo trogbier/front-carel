@@ -3,11 +3,10 @@ import {ContextData} from "../context/ContextData";
 import Switches from "./Switches";
 
 const Table = () => {
-    const {expect, fact, b, setExpect,change} = useContext(ContextData)
+    const {expect, fact, countYear, setExpect,change} = useContext(ContextData)
 
     const Rename = (e, id) => {
         e.preventDefault()
-        // console.log(expect[id].title = 123)
         const newData = expect[id].title = +e.target.value
         setExpect([...expect], newData)
     }
@@ -24,7 +23,7 @@ const Table = () => {
                 <thead>
                 <tr>
                     <th/>
-                    {b.map((year, id) => {
+                    {countYear.map((year, id) => {
                         return <th key={id}>{id + 2010}</th>
                     })}
                 </tr>
@@ -35,6 +34,7 @@ const Table = () => {
                     {expect.map((expect, id) => {
                         return <td key={id}><input
                             style={{
+                                cursor:'pointer',
                                 borderBottom: 'none', height: '100%', margin: 0,
                                 color: 'rgba(0,0,0,0.87)',
                                 borderColor: 'rgba(118, 118, 118, 0.3)'
