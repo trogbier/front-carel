@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
-import {ContextData} from "../context/ContextData";
+import {ContexData} from "../context/ContextData";
 import Switches from "./Switches";
 
 const Table = () => {
-    const {expect, fact, countYear, setExpect,change} = useContext(ContextData)
+    const {expect, fact, countYear, setExpect,change} = useContext(ContexData)
 
     const Rename = (e, id) => {
         e.preventDefault()

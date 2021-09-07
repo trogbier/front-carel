@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
 import {Bar} from "react-chartjs-2";
-import {ContextData} from "../context/ContextData";
+import {ContexData} from "../context/ContextData";
 
 const BarChar = () => {
-    const {expect, fact,countYear} = useContext(ContextData)
+    const {expect, fact,countYear} = useContext(ContexData)
 
     return (
         <div style={{marginBottom: 100}}>

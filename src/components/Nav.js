@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
 import {Link} from "react-router-dom";
-import {ContextData} from "../context/ContextData";
+import {ContexData} from "../context/ContextData";
 
 const Nav = () => {
-    const {setChange} = useContext(ContextData)
+    const {setChange} = useContext(ContexData)
 
     return (
         <div style={{marginBottom: 80}}>

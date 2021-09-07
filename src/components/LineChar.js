@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
 import {Line} from "react-chartjs-2";
-import {ContextData} from "../context/ContextData";
+import {ContexData} from "../context/ContextData";
 
 const LineChar = () => {
-    const {expect, fact, countYear} = useContext(ContextData)
+    const {expect, fact, countYear} = useContext(ContexData)
     return (
         <div style={{marginBottom: 100}}>
             <Line

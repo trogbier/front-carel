@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
-import {ContextData} from "../context/ContextData";
+import {ContexData} from "../context/ContextData";
 
 const Switches = () => {
 
-    const {change,setChange} = useContext(ContextData)
+    const {change,setChange} = useContext(ContexData)
     const changeHandler = () => {
         setChange(!change)
     }
