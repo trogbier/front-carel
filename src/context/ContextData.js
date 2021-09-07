@@ -3,6 +3,7 @@ import React, {createContext, useState} from 'react';
 export const ContexData = createContext()
 
 const ContextProvider = ({children}) => {
+    //Заглушка вместо сервера,который должен был быть написан другим разработчиком на python и отдавать данные
     let [expect, setExpect] = useState([{title: 33852910313}, {title: 33852910313}, {title: 33852910313}, {title: 33852910313},
         {title: 33852910313}, {title: 33852910313}, {title: 33852910313}, {title: 33852910313}, {title: 33852910313}, {title: 33852910313}, {title: 33852910313}])
     const fact = [31850910313, 35935356067, 35395090715, 36462680559.25, 34117735931.87, 34801533070.60, 39323606617.18, 41108607816.91, 54378039681.2, 58543527525.81, 68182687573.07]
@@ -40,6 +41,7 @@ const ContextProvider = ({children}) => {
                 {title: 124124}, {title: 123}, {title: 544}, {title: 123}, {title: 123}]
 
         })
+
     return (
         <ContexData.Provider value={{expect, fact, countYear, setExpect, change, setChange, dataInfo, setDataInfo}}>
             {children}
